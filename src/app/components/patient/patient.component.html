@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<input [(ngModel)]="filtre" type="text" placeholder="nom, specialité, adresse..."/>
+<table class="table table-hover">
+
+    <thead class="thead-dark">
+        <tr>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>specialite</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let praticien of PratitienList">
+
+            <td *ngIf="hasToBeShown(praticien)">{{ praticien.nom }}</td>
+            <td *ngIf="hasToBeShown(praticien)">{{ praticien.prenom }}</td>
+            <td *ngIf="hasToBeShown(praticien)">{{ praticien.specialites[0] }}</td>
+            <td *ngIf="hasToBeShown(praticien)">
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-primary" (click)="prendreRdv(praticien.id)"><i class="fa fa-edit"></i>prendre RDV</a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

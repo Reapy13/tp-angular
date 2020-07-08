@@ -33,6 +33,29 @@
     </table>
 </div>
 
+<div class="conteneur" *ngIf="showEdit">
+    <h3>Editer un praticien</h3>
+    <div class="form-group">
+        <label>Prenom :</label>
+        <input type="text" class="form-control" [(ngModel)]="praticienEdited.prenom" />
+    </div>
+    <div class="form-group">
+        <label>Nom :</label>
+        <input type="text" class="form-control" [(ngModel)]="praticienEdited.nom" />
+    </div>
+    <div class="form-group">
+        <label>Specialites :</label>
+        <input type="text" class="form-control" *ngFor="let specialite of praticienEdited.specialites" [(ngModel)]="praticienEdited.specialites[praticienEdited.specialites.indexOf(specialite)]"/>
+        <input type="text" class="form-control" [(ngModel)]="specialiteEdited" />
+    </div>
+    <div class="form-group">
+        <label>Lieux de consultations :</label>
+        <input type="text" class="form-control" *ngFor="let location of praticienEdited.consultLocations" [(ngModel)]="praticienEdited.consultLocations[praticienEdited.consultLocations.indexOf(location)]"/>
+        <input type="text" class="form-control" [(ngModel)]="locationEdited" />
+    </div>
+    <button type="button" class="btn btn-primary" (click)="launchEdit()">Editer</button>
+</div>
+
 <div class="left-away">
     <button type="button" class="btn btn-lg" (click)="showAdd = !showAdd" [ngClass]="{'btn-primary' : !showAdd, 'btn-success' : showAdd}">{{addButtonLabel()}}</button>
 </div>

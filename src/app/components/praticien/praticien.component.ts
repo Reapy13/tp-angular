@@ -10,8 +10,13 @@ import {PraticienService} from '../../services/praticien.service';
 export class PraticienComponent implements OnInit {
 
     praticienTmp: Praticien = new Praticien('', '');
+
     praticienEdited: Praticien;
+    specialiteEdited: string;
+    locationEdited: string;
+
     showAdd: boolean = false;
+    showEdit: boolean = false;
 
     constructor(private praticienService: PraticienService) { }
 
@@ -32,7 +37,31 @@ export class PraticienComponent implements OnInit {
     }
 
     editPraticien(praticien: Praticien) {
-        this.praticienEdited = praticien.clone();
+        this.praticienEdited = new Praticien(praticien.prenom, praticien.nom);
+        this.praticienEdited.specialites = new Array<string>();
+        this.praticienEdited.consultLocations = new Array<string>();
+        if (praticien.specialites) {
+            praticien.specialites.forEach(value => this.praticienEdited.specialites.push(value));
+        }
+        if (praticien.consultLocations) {
+            praticien.consultLocations.forEach(value => this.praticienEdited.consultLocations.push(value));
+        }
+        this.praticienEdited.id = praticien.id;
+            this.showEdit = true;
+    }
+
+    launchEdit() {
+        if (this.specialiteEdited) {
+            this.praticienEdited.specialites.push(this.specialiteEdited);
+        }
+        if (this.locationEdited) {
+            this.praticienEdited.consultLocations.push(this.locationEdited);
+        }
+        this.praticienService.updatePraticien(this.praticienEdited);
+        this.showEdit = false;
+        this.praticienEdited = new Praticien('', '', new Array<string>(), new Array<string>());
+        this.specialiteEdited = null;
+        this.locationEdited = null;
     }
 
     deletePraticien(id: number) {

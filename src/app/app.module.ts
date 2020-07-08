@@ -12,10 +12,10 @@ import {FormsModule} from "@angular/forms";
 
 
 const routes = [
-  {
-    path : '',
-    component : HomeComponent
-  },
+    {
+        path : '',
+        component : HomeComponent
+    },
     {
         path : 'praticien',
         component : PraticienComponent

@@ -1,28 +1,110 @@
-<div class="card mt-3" *ngIf="praticienTmp!=null">
+<app-navbar></app-navbar>
+
+<div class="container my-5">
     <div class="card-header bg-info text-white">
-        <h3>Edition du praticien</h3>
+        <h2>Liste des praticiens</h2>
+    </div>
+    <div class="tableau">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Specialites</th>
+                <th>Lieux de consultation</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let praticien of findAll()">
+                <td>{{praticien.id}}</td>
+                <td>{{praticien.prenom}}</td>
+                <td>{{praticien.nom}}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let specialite of praticien.specialites">{{specialite}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let location of praticien.consultLocations">{{location}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <button class="btn btn-light" (click)="editPraticien(praticien)">edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deletePraticien(praticien.id)">delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="card-body">
+    <div class="conteneur" *ngIf="showEdit">
+        <h3>Editer un praticien</h3>
         <div class="form-group">
-            <label for="nom">Nom:</label>
-            <input type="text" class="form-control" id="nom" [(ngModel)]="praticienTmp.nom">
+            <label>Prenom :</label>
+            <input type="text" class="form-control" [(ngModel)]="praticienEdited.prenom" />
         </div>
         <div class="form-group">
-            <label for="prenom">Prénom:</label>
-            <input type="text" class="form-control" id="prenom" [(ngModel)]="praticienTmp.prenom">
+            <label>Nom :</label>
+            <input type="text" class="form-control" [(ngModel)]="praticienEdited.nom" />
         </div>
+        <div class="form-group">
+            <label>Specialites :</label>
+            <input type="text" class="form-control" *ngFor="let specialite of praticienEdited.specialites" [(ngModel)]="praticienEdited.specialites[praticienEdited.specialites.indexOf(specialite)]"/>
+            <input type="text" class="form-control" [(ngModel)]="specialiteEdited" />
+        </div>
+        <div class="form-group">
+            <label>Lieux de consultations :</label>
+            <input type="text" class="form-control" *ngFor="let location of praticienEdited.consultLocations" [(ngModel)]="praticienEdited.consultLocations[praticienEdited.consultLocations.indexOf(location)]"/>
+            <input type="text" class="form-control" [(ngModel)]="locationEdited" />
+        </div>
+        <div class="form-group">
+            <label>Horaires :</label>
+            <input type="text" class="form-control" [(ngModel)]="praticienEdited.horaires" />
+        </div>
+        <div class="form-group">
+            <label>Motifs de consultations :</label>
+            <input type="text" class="form-control" *ngFor="let motif of praticienEdited.motifs" [(ngModel)]="praticienEdited.motifs[praticienEdited.motifs.indexOf(motif)]"/>
+            <input type="text" class="form-control" [(ngModel)]="motifEdited" />
+        </div>
+        <button type="button" class="btn btn-primary" (click)="launchEdit()">Editer</button>
     </div>
 
-    <div class="card-footer">
-        <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="save()">
-                <i class="fa fa-check"></i>
-            </a>
-            <a class="btn btn-warning" (click)="cancel()">
-                <i class="fa fa-undo"></i>
-            </a>
-        </div>
+    <hr>
+    <div class="card-header bg-info text-white">
+        <h2>Liste des patiens</h2>
+    </div>
+    <div class="tableau">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>#</td>
+                <td>Prenom</td>
+                <td>Nom</td>
+                <td>
+                    <button class="btn btn-light" >edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger">delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>
+

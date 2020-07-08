@@ -1,21 +1,40 @@
 {
   "praticiens": [
     {
-      "id": 1,
-      "nom": "Fauchery",
+      "specialites": [
+        "general",
+        "sdfs",
+        "mrrrrr"
+      ],
+      "consultLocations": [
+        "Limoges"
+      ],
+      "motifs": [
+        "Motifs",
+        "ds"
+      ],
       "prenom": "Hugo",
+      "nom": "Fauchery",
+      "id": 1,
+      "horaires": "mardi"
+    },
+    {
+      "specialites": [
+        "jnn"
+      ],
+      "consultLocations": [
+        "n"
+      ],
+      "prenom": "m",
+      "nom": "n",
+      "id": 2
+    },
+    {
       "specialites": [],
-      "consultLocations": []
-    },
-    {
-      "prenom": "louay",
-      "nom": "saadi",
-      "id": 4
-    },
-    {
-      "prenom": "syrine",
-      "nom": "triki",
-      "id": 5
+      "consultLocations": [],
+      "prenom": "o",
+      "nom": "a",
+      "id": 3
     }
   ]
 }

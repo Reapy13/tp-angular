@@ -7,6 +7,8 @@
                 <th>Nom</th>
                 <th>Specialites</th>
                 <th>Lieux de consultation</th>
+                <th>Horaires</th>
+                <th>Motifs de consultation</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -26,11 +28,49 @@
                         <li *ngFor="let location of praticien.consultLocations">{{location}}</li>
                     </ul>
                 </td>
+                <td>{{praticien.horaires}}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let motif of praticien.motifs">{{motif}}</li>
+                    </ul>
+                </td>
                 <td><button class="btn btn-light" (click)="editPraticien(praticien)">edit</button></td>
                 <td><button class="btn btn-danger" (click)="deletePraticien(praticien.id)">delete</button></td>
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="conteneur" *ngIf="showEdit">
+    <h3>Editer un praticien</h3>
+    <div class="form-group">
+        <label>Prenom :</label>
+        <input type="text" class="form-control" [(ngModel)]="praticienEdited.prenom" />
+    </div>
+    <div class="form-group">
+        <label>Nom :</label>
+        <input type="text" class="form-control" [(ngModel)]="praticienEdited.nom" />
+    </div>
+    <div class="form-group">
+        <label>Specialites :</label>
+        <input type="text" class="form-control" *ngFor="let specialite of praticienEdited.specialites" [(ngModel)]="praticienEdited.specialites[praticienEdited.specialites.indexOf(specialite)]"/>
+        <input type="text" class="form-control" [(ngModel)]="specialiteEdited" />
+    </div>
+    <div class="form-group">
+        <label>Lieux de consultations :</label>
+        <input type="text" class="form-control" *ngFor="let location of praticienEdited.consultLocations" [(ngModel)]="praticienEdited.consultLocations[praticienEdited.consultLocations.indexOf(location)]"/>
+        <input type="text" class="form-control" [(ngModel)]="locationEdited" />
+    </div>
+    <div class="form-group">
+        <label>Horaires :</label>
+        <input type="text" class="form-control" [(ngModel)]="praticienEdited.horaires" />
+    </div>
+    <div class="form-group">
+        <label>Motifs de consultations :</label>
+        <input type="text" class="form-control" *ngFor="let motif of praticienEdited.motifs" [(ngModel)]="praticienEdited.motifs[praticienEdited.motifs.indexOf(motif)]"/>
+        <input type="text" class="form-control" [(ngModel)]="motifEdited" />
+    </div>
+    <button type="button" class="btn btn-primary" (click)="launchEdit()">Editer</button>
 </div>
 
 <div class="left-away">

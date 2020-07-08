@@ -22,8 +22,15 @@ export class PraticienService {
     }
 
     createPraticien(praticien: Praticien): void {
-        this.http.post<Praticien>('http://localhost:3000/praticiens', praticien).subscribe(() => {
-            this.load();
-        });
+        this.http.post<Praticien>('http://localhost:3000/praticiens', praticien).subscribe(() => this.load(), error => console.log(error));
     }
+
+    updatePraticien(praticien: Praticien): void {
+        this.http.put<Praticien>('http://localhost:3000/praticiens/' + praticien.id, praticien).subscribe(() => this.load(), error => console.log(error));
+    }
+
+    deletePraticien(id: number): void {
+        this.http.delete('http://localhost:3000/praticiens/' + id).subscribe(() => this.load(), error => console.log(error));
+    }
+
 }

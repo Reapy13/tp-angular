@@ -5,6 +5,10 @@
     border-radius: 6px;
 }
 
+.left-away {
+    margin-left: 30px;
+}
+
 .tableau {
     padding: 10px;
     margin: 20px;

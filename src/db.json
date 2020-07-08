@@ -1,0 +1,21 @@
+{
+  "praticiens": [
+    {
+      "id": 1,
+      "nom": "Fauchery",
+      "prenom": "Hugo",
+      "specialites": [],
+      "consultLocations": []
+    },
+    {
+      "prenom": "louay",
+      "nom": "saadi",
+      "id": 4
+    },
+    {
+      "prenom": "syrine",
+      "nom": "triki",
+      "id": 5
+    }
+  ]
+}

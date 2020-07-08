@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import {RouterModule} from '@angular/router';
 import { PraticienComponent } from './components/praticien/praticien.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 const routes = [
   {
@@ -23,11 +24,12 @@ const routes = [
     HomeComponent,
     PraticienComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

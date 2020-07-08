@@ -10,10 +10,16 @@ import {PraticienService} from '../../services/praticien.service';
 export class PraticienComponent implements OnInit {
 
     praticienTmp: Praticien = new Praticien('', '');
+    praticienEdited: Praticien;
+    showAdd: boolean = false;
 
     constructor(private praticienService: PraticienService) { }
 
     ngOnInit(): void {
+    }
+
+    findAll(): Array<Praticien> {
+        return this.praticienService.getAllPraticiens();
     }
 
     addPraticien(): void {
@@ -23,5 +29,17 @@ export class PraticienComponent implements OnInit {
 
     clearAddForm(): void {
         this.praticienTmp = new Praticien('', '');
+    }
+
+    editPraticien(praticien: Praticien) {
+        this.praticienEdited = praticien.clone();
+    }
+
+    deletePraticien(id: number) {
+        this.praticienService.deletePraticien(id);
+    }
+
+    addButtonLabel(): string {
+        return this.showAdd ? '-' : '+';
     }
 }

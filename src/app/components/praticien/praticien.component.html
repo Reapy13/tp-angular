@@ -7,6 +7,8 @@
                 <th>Nom</th>
                 <th>Specialites</th>
                 <th>Lieux de consultation</th>
+                <th>Horaires</th>
+                <th>Motifs de consultation</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -24,6 +26,12 @@
                 <td>
                     <ul>
                         <li *ngFor="let location of praticien.consultLocations">{{location}}</li>
+                    </ul>
+                </td>
+                <td>{{praticien.horaires}}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let motif of praticien.motifs">{{motif}}</li>
                     </ul>
                 </td>
                 <td><button class="btn btn-light" (click)="editPraticien(praticien)">edit</button></td>
@@ -52,6 +60,15 @@
         <label>Lieux de consultations :</label>
         <input type="text" class="form-control" *ngFor="let location of praticienEdited.consultLocations" [(ngModel)]="praticienEdited.consultLocations[praticienEdited.consultLocations.indexOf(location)]"/>
         <input type="text" class="form-control" [(ngModel)]="locationEdited" />
+    </div>
+    <div class="form-group">
+        <label>Horaires :</label>
+        <input type="text" class="form-control" [(ngModel)]="praticienEdited.horaires" />
+    </div>
+    <div class="form-group">
+        <label>Motifs de consultations :</label>
+        <input type="text" class="form-control" *ngFor="let motif of praticienEdited.motifs" [(ngModel)]="praticienEdited.motifs[praticienEdited.motifs.indexOf(motif)]"/>
+        <input type="text" class="form-control" [(ngModel)]="motifEdited" />
     </div>
     <button type="button" class="btn btn-primary" (click)="launchEdit()">Editer</button>
 </div>

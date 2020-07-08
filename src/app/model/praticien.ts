@@ -4,6 +4,8 @@ export class Praticien {
     nom: string;
     specialites: Array<string> = new Array<string>();
     consultLocations: Array<string> = new Array<string>();
+    horaires: string;
+    motifs: Array<string> = new Array<string>();
 
     constructor(prenom: string, nom: string, specialites?: Array<string>, consultLocations?: Array<string>) {
         this.prenom = prenom;

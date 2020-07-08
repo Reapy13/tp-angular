@@ -9,6 +9,10 @@
       "consultLocations": [
         "Limoges"
       ],
+      "motifs": [
+        "Motifs",
+        "ds"
+      ],
       "prenom": "Hugo",
       "nom": "Fauchery",
       "id": 1

@@ -14,6 +14,7 @@ export class PraticienComponent implements OnInit {
     praticienEdited: Praticien;
     specialiteEdited: string;
     locationEdited: string;
+    motifEdited: string;
 
     showAdd: boolean = false;
     showEdit: boolean = false;
@@ -40,11 +41,15 @@ export class PraticienComponent implements OnInit {
         this.praticienEdited = new Praticien(praticien.prenom, praticien.nom);
         this.praticienEdited.specialites = new Array<string>();
         this.praticienEdited.consultLocations = new Array<string>();
+        this.praticienEdited.motifs = new Array<string>();
         if (praticien.specialites) {
             praticien.specialites.forEach(value => this.praticienEdited.specialites.push(value));
         }
         if (praticien.consultLocations) {
             praticien.consultLocations.forEach(value => this.praticienEdited.consultLocations.push(value));
+        }
+        if (praticien.motifs) {
+            praticien.motifs.forEach(value => this.praticienEdited.motifs.push(value));
         }
         this.praticienEdited.id = praticien.id;
             this.showEdit = true;
@@ -57,11 +62,15 @@ export class PraticienComponent implements OnInit {
         if (this.locationEdited) {
             this.praticienEdited.consultLocations.push(this.locationEdited);
         }
+        if (this.motifEdited) {
+            this.praticienEdited.motifs.push(this.motifEdited);
+        }
         this.praticienService.updatePraticien(this.praticienEdited);
         this.showEdit = false;
         this.praticienEdited = new Praticien('', '', new Array<string>(), new Array<string>());
         this.specialiteEdited = null;
         this.locationEdited = null;
+        this.motifEdited = null;
     }
 
     deletePraticien(id: number) {

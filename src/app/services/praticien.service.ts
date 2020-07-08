@@ -17,6 +17,11 @@ export class PraticienService {
         this.http.get<Array<Praticien>>('http://localhost:3000/praticiens').subscribe(resp => this.praticiens = resp, error => console.log(error));
     }
 
+    getPraticien(id: number): Praticien {
+        return this.praticiens[id];
+    }
+
+
     getAllPraticiens(): Array<Praticien> {
         return this.praticiens;
     }

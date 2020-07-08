@@ -10,6 +10,7 @@ import {PraticienService} from '../../services/praticien.service';
 export class PraticienComponent implements OnInit {
 
     praticienTmp: Praticien = new Praticien('', '');
+    praticienId: number;
 
     praticienEdited: Praticien;
     specialiteEdited: string;
@@ -19,13 +20,10 @@ export class PraticienComponent implements OnInit {
     showAdd: boolean = false;
     showEdit: boolean = false;
 
-    constructor(private praticienService: PraticienService) { }
-
-    ngOnInit(): void {
+    constructor(private praticienService: PraticienService) {
     }
 
-    findAll(): Array<Praticien> {
-        return this.praticienService.getAllPraticiens();
+    ngOnInit(): void {
     }
 
     addPraticien(): void {
@@ -37,7 +35,8 @@ export class PraticienComponent implements OnInit {
         this.praticienTmp = new Praticien('', '');
     }
 
-    editPraticien(praticien: Praticien) {
+    editPraticien(id: number) {
+        let praticien: Praticien = this.praticienService.getPraticien(id);
         this.praticienEdited = new Praticien(praticien.prenom, praticien.nom);
         this.praticienEdited.specialites = new Array<string>();
         this.praticienEdited.consultLocations = new Array<string>();
@@ -79,5 +78,16 @@ export class PraticienComponent implements OnInit {
 
     addButtonLabel(): string {
         return this.showAdd ? '-' : '+';
+    }
+
+    editButtonLabel(): string {
+        return this.showEdit ? '-' : '+';
+    }
+
+    clickEditButton() {
+        // We use the edit mode with the first praticien.
+        // We wanted to log the praticien to show its own edit window in this view.
+        this.praticienEdited = this.praticienService.getPraticien(1);
+        this.showEdit = !this.showEdit;
     }
 }

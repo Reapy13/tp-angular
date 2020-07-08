@@ -16,6 +16,10 @@ export class PraticienComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    findAll(): Array<Praticien> {
+        return this.praticienService.getAllPraticiens();
+    }
+
     addPraticien(): void {
         this.praticienService.createPraticien(this.praticienTmp);
         this.clearAddForm();

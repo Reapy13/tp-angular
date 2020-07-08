@@ -1,12 +1,43 @@
+<div class="tableau">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Specialites</th>
+                <th>Lieux de consultation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let praticien of findAll()">
+                <td>{{praticien.id}}</td>
+                <td>{{praticien.prenom}}</td>
+                <td>{{praticien.nom}}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let specialite of praticien.specialites">{{specialite}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let location of praticien.consultLocations">{{location}}</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 <div class="conteneur">
     <h3>Ajouter un praticien</h3>
     <div class="form-group">
-        <label>Nom :</label>
-        <input type="text" class="form-control" placeholder="Entrer votre nom..."/>
+        <label>Prenom :</label>
+        <input type="text" class="form-control" placeholder="Entrer votre prénom..." [(ngModel)]="praticienTmp.prenom" />
     </div>
     <div class="form-group">
-        <label>Prenom :</label>
-        <input type="text" class="form-control" placeholder="Entrer votre prénom..."/>
+        <label>Nom :</label>
+        <input type="text" class="form-control" placeholder="Entrer votre nom..." [(ngModel)]="praticienTmp.nom" />
     </div>
     <button type="submit" class="btn btn-primary" (click)="addPraticien()">Ajouter un praticien...</button>
 </div>

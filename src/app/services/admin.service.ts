@@ -15,7 +15,7 @@ export class AdminService {
         this.http.get<Array<Admin>>('http://localhost:3000/admins').subscribe(resp => this.admins = resp, error => console.log(error));
     }
 
-    createAdmin(admin: admin): void {
+    createAdmin(admin: Admin): void {
         this.http.post<Admin>('http://localhost:3000/admins', admin).subscribe(() => {
             this.load();
         });

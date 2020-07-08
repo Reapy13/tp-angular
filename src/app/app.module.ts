@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AdminComponent } from './components/admin/admin.component';
 import {FormsModule} from "@angular/forms";
 
+
 const routes = [
   {
     path : '',
@@ -34,12 +35,13 @@ const routes = [
     PraticienComponent,
     AdminComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule,
-      FormsModule
-  ],
+
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

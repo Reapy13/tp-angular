@@ -1,6 +1,15 @@
 .conteneur {
     padding: 10px;
-    margin: 20px;
+    margin: 20px 25%;
     border: 1px solid black;
     border-radius: 6px;
+}
+
+.left-away {
+    margin-left: 30px;
+}
+
+.tableau {
+    padding: 10px;
+    margin: 20px;
 }

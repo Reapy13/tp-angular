@@ -11,4 +11,11 @@ export class Praticien {
         this.specialites = specialites;
         this.consultLocations = consultLocations;
     }
+
+    clone(): Praticien {
+        let praticienTmp: Praticien = new Praticien(this.prenom, this.nom);
+        praticienTmp.specialites = this.specialites;
+        praticienTmp.consultLocations = this.consultLocations;
+        return praticienTmp;
+    }
 }

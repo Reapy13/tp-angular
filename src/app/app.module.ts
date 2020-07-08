@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import {RouterModule} from '@angular/router';
+import { PraticienComponent } from './components/praticien/praticien.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes = [
   {
@@ -13,15 +15,18 @@ const routes = [
   },
 ];
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    PraticienComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

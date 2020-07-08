@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import  {Praticien} from "../../model/praticien";
 
+
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
@@ -9,14 +10,14 @@ import  {Praticien} from "../../model/praticien";
 })
 export class PatientComponent implements OnInit {
 
-  filter: string = '';
+  filtre: string = '';
 
     // create an array of objects
-    PratitienList: Praticien[] = [
-      new Praticien("M", "Anup", "Kumar", "Dentiste", "Rue Brancion"),
-      new Praticien("M", "John", "Doe", "Ophtalmologue", "Rue Didot"),
-      new Praticien("Mme","Claire", "Murphy", "Dentiste", "Rue convention"),
-      new Praticien("M","Mai", "Truong", "Ophtalmologue", "Boulevard lefevre")
+    PratitienList: Array<Praticien> = [
+      new Praticien( "Anup", "Kumar", ["Dentiste"], ["Rue Brancion"]),
+      new Praticien( "John", "Doe", ["Ophtalmologue"], ["Rue Didot"]),
+     new Praticien("Claire", "Murphy", ["Dentiste"], ["Rue convention"]),
+     new Praticien("Mai", "Truong", ["Ophtalmologue"], ["Boulevard lefevre"])
     ];
 
   constructor() { }
@@ -25,20 +26,12 @@ export class PatientComponent implements OnInit {
   }
 
   public hasToBeShown(praticien: Praticien) {
-    return praticien.prenom.toLowerCase().includes(this.filter.toLowerCase())
-    || praticien.nom.toLowerCase().includes(this.filter.toLowerCase())
-    || praticien.specialite.toLowerCase().includes(this.filter.toLowerCase())
-    || praticien.adresse.toLowerCase().includes(this.filter.toLowerCase());;
+    return praticien.prenom.toLowerCase().includes(this.filtre.toLowerCase())
+     || praticien.nom.toLowerCase().includes(this.filtre.toLowerCase())
     }
 
     public prendreRdv(id: number) {
   
-  //    this.stagiaireService.find(id).subscribe(resp => {
-  //      this.stagiaireForm = resp;
-  //      if (!this.stagiaireForm.formateur) {
-  //        this.stagiaireForm.formateur = new Formateur();
-  //      }
-  //    }, error => console.log(error));
    }
 
 }
